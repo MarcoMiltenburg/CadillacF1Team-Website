@@ -1,0 +1,51 @@
+
+@import 'theme-colours';
+@import 'media-queries';
+
+.homepage .thumbnails ul                        { flex-wrap: nowrap; }
+
+@include for-size(phone-only) {
+	div.thumbnails ul > li 											{ width: calc((100% - #{$spacingBetweenThumbnails * 3}) / 3); }
+}
+@include for-size(phone-small-only) {
+	div.thumbnails ul > li 											{ width: calc((100% - #{$spacingBetweenThumbnails * 2}) / 2); }
+	article.eventsummary div.thumbnails ul > li:nth-child(3)		{ display: none; }
+}
+@include for-size(tablet-portrait-up) {
+	div.thumbnails ul > li 											{ width: calc((100% - #{$spacingBetweenThumbnails * 2}) / 2); }
+	article.eventsummary div.thumbnails ul > li:nth-child(3)		{ display: none; }
+}
+@include for-size(tablet-landscape-up) {
+	div.thumbnails ul > li 											{ width: calc((100% - #{$spacingBetweenThumbnails * 3}) / 3); }
+	article.eventsummary div.thumbnails ul > li:nth-child(3)		{ display: block; }
+}
+@media (min-width: 1324px) {
+	div.thumbnails ul > li 											{ width: calc((100% - #{$spacingBetweenThumbnails * 4}) / 4); }
+	article.eventsummary div.thumbnails ul > li:nth-child(4)		{ display: block; }
+}
+@media (min-width: 1605px) {
+	div.thumbnails ul > li 											{ width: calc((100% - #{$spacingBetweenThumbnails * 5}) / 5); }
+	article.eventsummary div.thumbnails ul > li:nth-child(5)		{ display: block; }
+}
+@media (min-width: 1886px) {
+	div.thumbnails ul > li 											{ width: calc((100% - #{$spacingBetweenThumbnails * 6}) / 6); }
+	article.eventsummary div.thumbnails ul > li:nth-child(6)		{ display: block; }
+}
+@media (min-width: 2247px) {
+	div.thumbnails ul > li 											{ width: calc((100% - #{$spacingBetweenThumbnails * 7}) / 7); }
+	article.eventsummary div.thumbnails ul > li:nth-child(7)		{ display: block; }
+}
+@media (min-width: 2528px) {
+	div.thumbnails ul > li 											{ width: calc((100% - #{$spacingBetweenThumbnails * 8}) / 8); }
+	article.eventsummary div.thumbnails ul > li:nth-child(8)		{ display: block; }
+}
+
+@include for-size(phone-only) {
+	.homepage									{ display: grid; grid-template-columns: 1fr; grid-template-rows: min-content; }
+	.homepage .latestevents						{ grid-column: 1 / 1; }
+	.homepage .links							{ grid-column: 1 / 1; }
+}
+
+@media (min-width: 1886px) {
+	.homepage									{ grid-template-columns: auto 480px; }	
+}

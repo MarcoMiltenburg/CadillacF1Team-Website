@@ -1,0 +1,9 @@
+
+@import 'theme-colours';
+@import 'media-queries';
+
+
+main.basket fieldset					        { width: auto; padding: 20px; box-sizing: border-box; background-color: $lightBackground; border-radius: 6px; border: 0; margin: 20px 0 30px 0; }
+main.basket label                               { font-weight: normal; color: $bodyTextColor; }
+
+.retrydownload                                  { display: none; }

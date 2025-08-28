@@ -1,0 +1,41 @@
+
+@import 'theme-colours';
+@import 'media-queries';
+
+.homepage										{ display: grid; grid-template-columns: auto 400px; column-gap: 20px; }
+.homepage .latestevents							{ grid-column: 1 / 2; }
+.homepage .links								{ grid-column: 2 / 3; }
+
+.homepage .links .events,
+.homepage .links .current,
+.homepage .links .legends,
+.homepage .links .seriesinfo	        		{ background-color: $blocksBackgroundColor; border-radius: 5px; padding: 10px; box-sizing: border-box; margin-bottom: 20px; }
+
+.linksheader                                    { display:flex; justify-content: space-between; align-items: flex-end; margin-bottom: 0.8em; }
+.linksheader.sitename                           { display: none; }
+.linksheader h1                                 { margin-bottom: 0; }
+.switchseason                                   { border: 0; padding: 0; margin: 0; }
+.switchseason select                            { padding: 4px; margin: 0 0 0 6px; }
+
+.events ol li									{ list-style: none; margin: 0 0 4px 0; }
+.events ul										{ display: flex; }
+.events ul li									{ display: inline-block; list-style: none; white-space: nowrap; }
+.events ul li:nth-child(2)						{ position: relative; padding-left: 1.2em; white-space: normal; }
+.events ul li:nth-child(2)::before				{ position: absolute; content: '-'; left: 0.5em; }
+
+article.pictures,
+article.eventsummary							{ position: relative; background-color: $blocksBackgroundColor; padding: 10px; margin-bottom: 10px; border-radius: 6px; }
+article.eventsummary							{ margin-bottom: 20px; }
+article.pictures h2,
+article.eventsummary h2							{ margin: 0 0 0.35em 0; }
+article.pictures p								{ margin-top: 0; }
+article.eventsummary h2 a:link,
+article.eventsummary h2 a:visited				{ text-decoration: none; color: $eventSummaryTitleColor; }
+article.eventsummary h2 a:hover,
+article.eventsummary h2 a:active				{ text-decoration: underline; color: $eventSummaryTitleHoverColor; }
+article.eventsummary h3							{ margin: 0 0 0.35em 0; color: $eventSummaryDateColor; }
+
+article.eventsummary div.thumbnails li					{ display: none; max-width: 275px; }
+article.eventsummary div.thumbnails li:nth-child(1),
+article.eventsummary div.thumbnails li:nth-child(2),
+article.eventsummary div.thumbnails li:nth-child(3)		{ display: block; }

@@ -1,0 +1,180 @@
+
+@import 'theme-colours';
+@import 'media-queries';
+
+header											{ position: fixed; z-index: 1000; top: 0; width: 100%; display: grid; grid-template-areas: 'logo search shortcuts'; grid-template-columns: 1fr auto 1fr; box-sizing: border-box; padding: 10px $bodyPaddingToSideRegular 10px $bodyPaddingToSideRegular; background: $headerBackgroundColor; color: $headerTextColor; box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75); }
+
+
+/*
+   ========
+     Logo
+   ========
+*/
+
+@import 'logo';
+
+
+/*
+   ==========
+     Search
+   ==========
+*/
+
+header .search									{ grid-area: search; height: 42px; box-sizing: border-box; }
+header .search form								{ position: relative; width: 100%; box-sizing: border-box; }
+header .search input							{ box-sizing: border-box; width: 100%; height: 42px; line-height: 42px; padding: 0 42px 0 6px; border: 0; border: 1px solid $headerSearchInactiveBorderColor; border-radius: 3px; background-color: $headerSearchBackgroundColor; -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+header .search input:focus,
+header .search input:focus-visible				{ outline: none; }
+header .search input:focus						{ border-color: $headerSearchActiveBorderColor; }
+header .search button							{ position: absolute; top: 0; right: 0; width: 42px; height: 42px; border: 0; border-radius: 3px; border-top-left-radius: 0; border-bottom-left-radius: 0; cursor: pointer; color: $bodyTextLightColor; background: $headerSearchButtonBackgroundColor url(/img/all-icons.<%= datetimeraw %>.svg#search) no-repeat center; background-size: 50%; }
+
+
+/*
+   ==============
+     Navigation
+   ==============
+*/
+
+.navigation label								{ position: fixed; z-index: 3001; top: 15px; left: $bodyPaddingToSideRegular; width: 80px; padding: 6px; background-color: $menuButtonBackgroundColor; border: 1px solid $menuButtonBorderColor; border-radius: 5px; transition: border-color 0.5s; cursor: pointer; }
+.navigation label i								{ position: absolute; top: 6px; left: 40px; cursor: pointer; font-style: normal; font-weight: bold; color: $menuButtonTextColor; }
+.navigation label .navtoggle-open				{ opacity: 1; }
+.navigation label .navtoggle-close				{ opacity: 0; }
+
+.navigation nav									{ position: fixed; z-index: 3000; overflow-y: scroll; top: 0; left: -270px; width: 250px; height: 100%; box-sizing: border-box; padding-bottom: 20px; transition: left 0.5s; background: $menuNavBackgroundColor; color: $menuNavTextColor; -ms-overflow-style: none; scrollbar-width: none; box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75); }
+.navigation nav::-webkit-scrollbar				{ display: none; }
+.navigation nav .navitems						{ padding: 0 10px 10px 10px; }
+
+.navigation .navtop								{ position: sticky; z-index:1000; top: 0; left: 0; height: 80px; background: rgba($menuNavBackgroundColor, 1); background: linear-gradient(180deg, rgba($menuNavBackgroundColor, 1) 0%, rgba($menuNavBackgroundColor, 1) 80%, rgba($menuNavBackgroundColor, 0) 100%); }
+
+.navigation .home								{ position: absolute; z-index: 3001; top: 15px; right: $bodyPaddingToSideRegular; display: block; width: 38px; height: 31px; box-sizing: border-box; border: 1px solid $menuButtonActiveBorderColor; border-radius: 5px; background: $siteBackgroundColor url(/img/all-icons.<%= datetimeraw %>.svg#home) no-repeat center; background-size: 22px; }
+.navigation .home span							{ display: none; }
+
+#navtoggle										{ display: none; }
+
+#navtoggle ~ label .navtoggle-open				{ opacity: 1; transition: opacity 0.5s; }
+#navtoggle ~ label .navtoggle-close				{ opacity: 0; transition: opacity 0.2s; }
+
+#navtoggle:checked ~ label						{ color: $menuButtonActiveTextColor; background-color: $menuButtonActiveBackgroundColor; border-color: $menuButtonActiveBorderColor; }
+#navtoggle:checked ~ label .navtoggle-open		{ opacity: 0; transition: opacity 0.2s; }
+#navtoggle:checked ~ label .navtoggle-close		{ opacity: 1; transition: opacity 0.5s; }
+
+#navtoggle:checked ~ nav						{ left: 0; }
+
+$hamburgerItemHeight: 3px;
+$hamburgerItemSpacing: $hamburgerItemHeight + 1;
+
+.navtoggle-icon									{ display: block; width: 24px; height: $hamburgerItemHeight * 3 + $hamburgerItemSpacing * 2; position: relative; cursor: pointer; transform: rotate(0deg); transition: .5s ease-in-out; }
+.navtoggle-icon span							{ display: block; position: absolute; height: $hamburgerItemHeight; width: 100%; background: $menuButtonActiveBorderColor; border-radius: $hamburgerItemHeight; opacity: 1; left: 0; transform: rotate(0deg); transition: .25s ease-in-out; }
+.navtoggle-icon span:nth-child(1)				{ top: 0px; }
+.navtoggle-icon span:nth-child(2),
+.navtoggle-icon span:nth-child(3)				{ top: $hamburgerItemHeight + $hamburgerItemSpacing; }
+.navtoggle-icon span:nth-child(4)				{ top: $hamburgerItemHeight * 2 + $hamburgerItemSpacing * 2; }
+
+#navtoggle:checked ~ label .navtoggle-icon span:nth-child(1),
+#navtoggle:checked ~ label .navtoggle-icon span:nth-child(4)		{ top: $hamburgerItemHeight + $hamburgerItemSpacing; width: 0%; left: 50%; }
+#navtoggle:checked ~ label .navtoggle-icon span:nth-child(2)		{ -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); }
+#navtoggle:checked ~ label .navtoggle-icon span:nth-child(3)		{ -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -o-transform: rotate(-45deg); transform: rotate(-45deg); }
+
+.navigation a:link,
+.navigation a:visited							{ color: $menuNavLinkTextColor; }
+.navigation a:hover,	
+.navigation a:active							{ color: $menuNavLinkTextHoverColor; }
+
+.navitems .navheader                            { margin: 20px -10px 0 -10px; padding: 10px 10px 4px 10px; font-weight: $menuNavHeaderTextFontWeight; color: $menuNavHeaderTextColor; background-color: $menuNavHeaderBackgroundColor; border-bottom: 2px solid $cadillacFlagRed; }
+.navitems .navheader:first-child                { margin-top: 0; }
+.navitems .subtitle								{ margin-top: 16px; font-weight: bold; }
+.navitems .subtitle:first-child					{ margin-top: 10px; }
+.navitems ul                                    { margin-top: 0.3em; }
+.navitems ul li                                 { position: relative; }
+.navitems ul li a								{ display: inline-block; padding: 0.2em; }
+.navitems ul li.currentseason a					{ background-color: $highlightColor; }
+
+.navigation ul.links                            { margin: 30px 0 0 calc(10px + 1em); }
+.navigation ul.links li a                       { display: block; margin: 0.8em 0 0 0; padding: 0 0 0 1.4em; background-repeat: no-repeat; background-position: 0px center; background-size: 1em; }
+.navigation ul.links li a:link,
+.navigation ul.links li a:visited				{ color: $menuOtherLinkTextColor; }
+.navigation ul.links li a:hover,	
+.navigation ul.links li a:active				{ color: $menuOtherLinkTextHoverColor; }
+
+.socials										{ display: flex; justify-content: center; margin-top: 2em; }
+.socials a										{ display: block; width: 24px; height: 24px; margin: 0 0.4em; opacity: 0.8; }
+.socials a.instagram							{ background: url(/img/all-icons.<%= datetimeraw %>.svg#instagram) no-repeat 0 center; background-size: 24px; }
+.socials a.tiktok								{ background: url(/img/all-icons.<%= datetimeraw %>.svg#tiktok) no-repeat 0 center; background-size: 24px; }
+.socials a.twitter-x							{ background: url(/img/all-icons.<%= datetimeraw %>.svg#twitter-x) no-repeat 0 center; background-size: 20px; width: 20px; }
+.socials a.facebook								{ background: url(/img/all-icons.<%= datetimeraw %>.svg#facebook) no-repeat 0 center; background-size: 24px; }
+.socials a.youtube								{ background: url(/img/all-icons.<%= datetimeraw %>.svg#youtube) no-repeat 0 center; background-size: 32px; width: 32px; }
+
+
+/*
+   =============
+     Shortcuts
+   =============
+*/
+
+.shortcuts										{ grid-area: shortcuts; display: flex; justify-content: flex-end; align-items: center; height: 42px; }
+.shortcuts a									{ margin-left: 20px; border-radius: 3px; }
+.shortcuts a:link,
+.shortcuts a:visited							{ color: $shortcutsTextColor; text-decoration: none; background-color: $shortcutsBackgroundColor; }
+.shortcuts a:hover,	
+.shortcuts a:active								{ color: $shortcutsTextHoverColor; text-decoration: none; background-color: $shortcutsHoverBackgroundColor; }
+.shortcuts a em									{ display: block; font-style: normal; }
+.shortcuts a span								{ display: block; font-weight: bold; }
+.shortcuts a div								{ display: flex; justify-content: center; align-items: center; box-sizing: border-box; height: 42px; padding: 4px 6px; border-radius: 3px; }
+.shortcuts a.account div						{ padding-left: 36px; background: url(/img/all-icons.<%= datetimeraw %>.svg#account) no-repeat 6px center; background-size: 1.5em; }
+.shortcuts a.download div						{ flex-direction: column; align-items: flex-start; padding-left: 36px; background: url(/img/all-icons.<%= datetimeraw %>.svg#download) no-repeat 6px center; background-size: 1.5em; }
+.shortcuts a.download div.added					{ animation: download-basket-added 1s forwards; }
+.shortcuts a.download div.error					{ animation: download-basket-error 1s forwards; }
+
+@keyframes download-basket-added {
+	0% { background-color: rgba($shortcutsBasketAddedBackgroundColor, 0); }
+	10% { background-color: rgba($shortcutsBasketAddedBackgroundColor, 1); }
+	100% { background-color: rgba($shortcutsBasketAddedBackgroundColor, 0); }
+}
+
+@keyframes download-basket-error {
+	0% { background-color: rgba($shortcutsBasketErrorBackgroundColor, 0); }
+	10% { background-color: rgba($shortcutsBasketErrorBackgroundColor, 1); }
+	100% { background-color: rgba($shortcutsBasketErrorBackgroundColor, 0); }
+}
+
+
+/*
+   =================
+     Media Queries
+   =================
+*/
+
+@include for-size(max-tablet-landscape) {
+	header										{ grid-template-columns: 1.5fr auto 1.2fr; }
+}
+
+@include for-size(max-tablet-portrait) {
+	header										{ grid-template-areas: 'logo shortcuts' 'search search'; grid-template-columns: 1fr auto; grid-template-rows: 42px; padding-left: $bodyPaddingToSideMinimal; padding-right: $bodyPaddingToSideMinimal; }
+
+    .navigation label							{ left: $bodyPaddingToSideMinimal; }
+
+	header .search								{ width: 100%; max-width: auto; margin-top: 10px; }
+	
+	.navigation label							{ width: auto; }
+	.navigation label i							{ display: none; }
+	
+	.navigation .home							{ left: auto; right: $bodyPaddingToSideMinimal; }
+}
+
+@include for-size(tablet-landscape-up) {
+	header .search								{ width: 300px; }
+}
+
+@include for-size(desktop-up) {
+	header .search								{ width: 400px; }
+}
+
+@include for-size(phone-only) {
+	.shortcuts a								{ margin-left: 5px; padding-right: 0; border-radius: 5px; background-color: $shortcutsHoverBackgroundColor; }
+	.shortcuts a em,
+	.shortcuts a span							{ display: none; }
+	.shortcuts a.account div					{ padding-left: 42px; padding-right:0; background-position: 9px center; }
+	.shortcuts a.download div					{ padding-left: 42px; padding-right:0; background-position: 9px center; }
+	.shortcuts a.download[data-count]			{ position: relative; }
+	.shortcuts a.download[data-count]:after		{ position: absolute; content: attr(data-count); background: $shortcutsCountBadgeBackgroundColor; box-sizing: border-box; min-width: 1.8em; text-align: center; border-radius: 0.8em; display: inline-block; padding: 0.3em 0.3em 0.3em 0.3em; color: $shortcutsCountBadgeTextColor; right: -8px; top: -8px; font-size: 10.25pt; }
+}

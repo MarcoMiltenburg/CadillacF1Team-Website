@@ -1,0 +1,14 @@
+@import 'theme-colours';
+@import 'media-queries';
+
+.logo											{ grid-area: logo; height: 24px; margin-top: 9px; padding-left: 136px; }
+.logo a,
+.logo img										{ display: inline-block; height: 100%; }
+
+@include for-size(max-tablet-portrait) {
+	.logo										{ height: 20px; padding-left: 54px; margin-top: 10px; }
+}
+
+@media (max-width:359px) {
+	.logo										{ height: 16px; padding-left: 54px; margin-top: 13px; }
+}

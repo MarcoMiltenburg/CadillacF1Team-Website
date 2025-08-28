@@ -1,0 +1,32 @@
+
+$phoneLargeWidth: 480px;
+$tabletPortraitWidth: 768px;
+$tabletLandscapeWidth: 1024px;
+$desktopWidth: 1200px;
+$desktopLargeWidth: 1800px;
+
+$minimumDifference: 1px;
+
+@mixin for-size($size) {
+	@if $size == phone-only {
+		@media (max-width: $tabletPortraitWidth - $minimumDifference) { @content; }
+	} @else if $size == phone-small-only {
+		@media (max-width: $phoneLargeWidth - $minimumDifference) { @content; }
+	} @else if $size == phone-large-up {
+		@media (min-width: $phoneLargeWidth) { @content; }
+	} @else if $size == tablet-portrait-up {
+		@media (min-width: $tabletPortraitWidth) { @content; }
+	} @else if $size == max-tablet-portrait {
+		@media (max-width: $tabletLandscapeWidth - $minimumDifference) { @content; }
+	} @else if $size == tablet-portrait-only {
+		@media (min-width: $tabletPortraitWidth) and (max-width: $tabletLandscapeWidth - $minimumDifference) { @content; }
+	} @else if $size == tablet-landscape-up {
+		@media (min-width: $tabletLandscapeWidth) { @content; }
+	} @else if $size == max-tablet-landscape {
+		@media (max-width: $desktopWidth - $minimumDifference) { @content; }
+	} @else if $size == desktop-up {
+		@media (min-width: $desktopWidth) { @content; }
+	} @else if $size == desktop-large-up {
+		@media (min-width: $desktopLargeWidth) { @content; }
+	}
+}

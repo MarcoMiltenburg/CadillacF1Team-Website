@@ -1,0 +1,16 @@
+
+@import 'theme-colours';
+@import 'media-queries';
+
+.logincontainer                         { display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+main.login                              { max-width: 600px; padding-top: 0; }
+main.login fieldset					    { margin: 0 auto; max-width: 600px; padding: 20px; box-sizing: border-box; background-color: $lightBackground; border-radius: 6px; border: 0; margin-top: 20px; }
+main.logout fieldset				    { margin: 0 auto; max-width: 600px; padding: 20px; box-sizing: border-box; background-color: $lightBackground; border-radius: 6px; border: 0; margin-top: 40px; }
+
+.loginlogo                              { margin: 0 auto; width: 80%; text-align: center; margin-bottom: 40px; }
+.content                                { width: auto; }
+
+@include for-size(phone-only) {
+    main.login fieldset,
+    main.logout fieldset					{ padding: 10px; margin-top: 20px; }
+}

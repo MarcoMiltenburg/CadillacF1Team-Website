@@ -1,0 +1,51 @@
+
+@import 'theme-colours';
+@import 'media-queries';
+
+ol.icons							    { margin: 8px 0 0 0; }
+ol.icons.extrarow                       { margin-top: 0; }
+ol.icons li							    { display: inline-block; }
+ol.icons a							    { position: relative; display: inline-block; width: $pageNavigationHeight; height: $pageNavigationHeight; text-align: center; border-radius: 4px; padding: 0; margin-bottom: 4px; line-height: $pageNavigationHeight; min-width: $pageNavigationHeight; text-align: center; border-radius: 4px; background-color: $siteBackgroundColor; background-repeat: no-repeat; background-position: center center; background-size: 60%; }
+ol.icons a::before                      { position: absolute; top: 0; left: 0; width: $pageNavigationHeight; font-weight: bold; color: $pageNavigationTextColor; }
+ol.icons a.media::before				{ content: "M"; }
+ol.icons a.partners::before             { content: "P"; }
+ol.icons a.internal::before             { content: "I"; }
+ol.icons a.drivers::before              { content: "D"; }
+ol.icons a:link,
+ol.icons a:visited					    { text-decoration: none; color: $pageNavigationTextColor; border: 1px solid $pageNavigationBorderColor; background-color: $pageNavigationBackgroundColor;}
+ol.icons a:hover,
+ol.icons a:active					    { text-decoration: none; color: $pageNavigationTextHoverColor; border: 1px solid $pageNavigationHoverBorderColor; background-color: $pageNavigationHoverBackgroundColor; }
+ol.icons a:hover::before,
+ol.icons a:active::before			    { text-decoration: none; color: $pageNavigationTextHoverColor; background-color: $pageNavigationHoverBackgroundColor; }
+ol.icons a.enabled					    { background-color: $pageNavigationActiveBackgroundColor; border: 1px solid $pageNavigationActiveBorderColor; color: $pageNavigationActiveTextColor; }
+ol.icons a.enabled::before,
+ol.icons a.enabled:hover::before,
+ol.icons a.enabled:active::before	    { background-color: $pageNavigationActiveBackgroundColor; color: $pageNavigationActiveTextColor; }
+ol.icons a.basket       			    { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#basket); }
+ol.icons a.basket:hover,
+ol.icons a.basket:active   			    { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#basket-hl); }
+ol.icons a.download     			    { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#download); }
+ol.icons a.download:hover,
+ol.icons a.download:active			    { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#download-hl); }
+ol.icons a.delete       			    { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#delete); }
+ol.icons a.delete:hover,
+ol.icons a.delete:active                { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#delete-hl); }
+ol.icons a.undelete     			    { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#undelete); }
+ol.icons a.undelete:hover,
+ol.icons a.undelete:active              { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#undelete-hl); }
+ol.icons a.edit	     			    	{ background-image: url(/img/all-icons.<%= datetimeraw %>.svg#edit); }
+ol.icons a.edit:hover,
+ol.icons a.edit:active                  { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#edit-hl); }
+ol.icons li span					    { display: none; }
+
+@include for-size(phone-only) {
+    div.thumbnails ul > li          { flex-basis: calc((100% - #{$spacingBetweenThumbnails * 3}) / 3); }
+}
+
+@include for-size(tablet-portrait-only) {
+    div.thumbnails ul > li          { flex-basis: calc((100% - #{$spacingBetweenThumbnails * 4}) / 4); }
+}
+
+@include for-size(phone-small-only) {
+    div.thumbnails ul > li          { flex-basis: calc(50% - #{$spacingBetweenThumbnails}); }
+}

@@ -1,0 +1,16 @@
+
+@import 'theme-colours';
+@import 'media-queries';
+
+footer								{ grid-area: footer; margin-top: 20px; padding: 20px; background-color: $footerBackgroundColor; text-align: center; }
+footer .copyright					{ margin: 1em auto; font-size: 12px; color: $footerTextColor; }
+
+ul.links li a.login                 { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#login); }
+
+@include for-size(tablet-landscape-up) {
+	footer .copyright				{ max-width: 60%; }
+}
+
+@include for-size(desktop-large-up) {
+	footer .copyright				{ max-width: 50%; }
+}

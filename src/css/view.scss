@@ -1,0 +1,53 @@
+
+@import 'theme-colours';
+@import 'media-queries';
+
+div.details							        { width: 100%; box-sizing: border-box; padding: 10px; margin-bottom: 10px; background-color: $blockDetailsBackgroundColor; border-radius: 6px; }
+div.details h3						        { margin-top: 0; }
+div.details dt						        { position: relative; font-weight: bold; padding-right: 1.2em; white-space: nowrap; }
+div.details dl                              { display: grid; grid-template-columns: min-content auto; margin: 0; }
+div.details dt,
+div.details dd						        { margin: 3px 0; }
+div.details dl dt:after                     { position: absolute; right: 0; top: -1px; content: ":"; padding-right: 0.3em; }
+
+div.downloads.evennumber			        { box-sizing: border-box; width: calc(50% - 5px); }
+div.downloads.evennumber.first		        { margin-right: 10px; }
+div.downloads.evennumber.second		        {  }
+
+div.downloads ol.actions                    { text-align: center; margin: 20px 0; }
+div.downloads ol.actions li                 { display: inline-block; padding: 0 2em 1em 2em; }
+div.downloads ol.actions li.hidden          { display: none; }
+div.downloads ol.actions a                  { display: inline-block; padding: 0 0 0 1.5em; background-repeat: no-repeat; background-position: 0px center; background-size: 1em; }
+div.downloads ol.actions a:link,
+div.downloads ol.actions a:visited          { text-decoration: $downloadLinkTextDecoration; color: $downloadLinkTextColor; }
+div.downloads ol.actions a:hover,
+div.downloads ol.actions a:active           { text-decoration: $downloadLinkTextHoverDecoration; color: $downloadLinkTextHoverColor; }
+div.downloads ol.actions a.basket           { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#basket); }
+div.downloads ol.actions a.download         { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#download); }
+div.downloads ol.actions a.delete           { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#delete); }
+div.downloads ol.actions a.undelete         { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#undelete); }
+div.downloads ol.actions a.edit             { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#edit); }
+
+div.downloads ol.icons                      { display: block; text-align: center; }
+
+div.admin ol                                { margin-bottom: 0; }
+
+div.viewphoto                               { display: flex; align-items: flex-start; }
+
+div.photo							        { width: calc(100% - 10px); max-width: $thumbnailLargeWidth + 23px; margin-right: 10px; }
+div.photo .slide					        { width: 100%; text-align: center; box-sizing: border-box; padding: 10px; line-height: 0; background-color: $siteBackgroundColor; border-radius: 6px; border-top: 1px solid $mediumAccent; border-left: 1px solid $mediumAccent; border-right: 2px solid $darkAccent; border-bottom: 2px solid $darkAccent; transform-style: preserve-3d; }
+div.photo img						        { max-width: 100%; max-height: 100%; }
+div.photo img.deleted			            { opacity: 0.2; }
+
+div.photoinfo								{ width: 100%; display: flex; flex-wrap: wrap; align-items: flex-start; align-content: flex-start; box-sizing: border-box; padding: 10px; background-color: $blocksBackgroundColor; border-radius: 6px; }
+div.photoinfo div.details:last-child 	    { margin-bottom: 0; }
+
+@include for-size(max-tablet-landscape) {
+    div.downloads.evennumber			    { width: 100%; }
+    div.downloads.evennumber.first		    { margin-right: 0; }
+}
+
+@include for-size(phone-only) {
+    div.viewphoto                           { flex-direction: row; flex-wrap: wrap; }
+    div.photo                               { width: 100%; margin: 0 0 10px 0; }
+}

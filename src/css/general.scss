@@ -1,0 +1,89 @@
+
+@import 'theme-colours';
+@import 'media-queries';
+
+html											{ overflow-y: scroll; }
+body											{ position: relative; background-color: $siteBackgroundColor; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 14px; color: $bodyTextColor; }
+
+h1                                              { margin: 0 0 1em 0; font-size: 22px; color: $titleColor; }
+h2												{ margin: 0 0 0.6em 0; font-size: 18px; color: $titleColor; }
+h3                                              { margin: 0; font-size: 16px; color: $titleColor; }
+
+ol, ul                                          { list-style: none; }
+ol, ul, li										{ margin: 0; padding: 0; }
+
+main											{ grid-area: main; padding: 30px $bodyPaddingToSideRegular 0 $bodyPaddingToSideRegular; }
+main div:first-child                            { position: relative; }
+
+.fullheight										{ display: grid; min-height: 100vh; box-sizing: border-box; padding-top: 62px; grid-template-areas: 'main' 'footer'; grid-template-rows: auto min-content; }
+.content                                        { margin: 0 auto; width: 100%; }
+.sectiontitle									{ display: block; margin: 0 0 0.8em 0; font-size: 16px; font-weight: bold; }
+
+#overlay										{ position: absolute; top: 0; width: 100%; height: 100%; z-index: 2000; background-color: #000; opacity: 0; display: none; transition: opacity 0.5s ease-in-out; }
+
+div.actions						                { position: absolute; top: 10px; right: 0; margin-bottom: 10px; }
+div.actions a					                { display: inline-block; padding: 0 10px; background-color: $siteBackgroundColor; line-height: $pageNavigationHeight; text-align: center; border-radius: 4px; }
+div.actions a:link,
+div.actions a:visited			                { text-decoration: none; color: $bodyTextColor; border: 1px solid $bodyTextColor; }
+div.actions a:hover,
+div.actions a:active			                { text-decoration: none; color: $linkTextHoverColor; border: 1px solid $linkTextHoverColor; }
+
+a:link, a:visited								{ color: $linkTextColor; text-decoration: none; }
+a:hover, a:active								{ color: $linkTextHoverColor; text-decoration: underline; }
+
+ol.form li							            { margin-top: 0.8em; }
+ol.form li:first-child  			            { margin-top: 0; }
+ol.form label						            { display: block; font-weight: bold; color: $formsFieldTitleColor; margin-bottom: 0.2em; }
+ol.form input[type="text"],
+ol.form input[type="password"],
+ol.form input[type="email"],
+ol.form input[type="url"],
+ol.form input[type="tel"],
+ol.form textarea,
+ol.form select                                  { display: block; width: 100%; box-sizing: border-box; padding: 8px 8px; border: 1px solid; }
+ol.form button						            { padding: 10px 20px; background-color: $buttonBackgroundColor; border: 0; border-radius: 5px; color: $buttonTextColor; margin: 0 0 0 5px; }
+ol.form button.default				            { background-color: $buttonDefaultBackgroundColor; color: $buttonDefaultTextColor; }
+ol.form button:disabled                         { background-color: $buttonDisabledBackgroundColor; color: $buttonDisabledTextColor; }
+ol.form li.buttons					            { text-align: right; margin-top: 20px; }
+ol.form li.buttons.opposite			            { text-align: left; }
+ol.form li.buttons.opposite button              { margin: 0 5px 0 0; }
+ol.form li.error label,
+ol.form li.error input,
+ol.form li.error textarea,
+ol.form li.error select                         { color: $errorColor; border-color: $errorColor; }
+
+ol.notifications					            { margin: 0 0 20px 0; }
+ol.notifications li					            { padding: 10px 10px 10px 3em; border-radius: 4px; color: $bodyTextLightColor; margin: 3px 0 0 0; }
+ol.notifications li:first-child                 { margin: 0; }
+ol.notifications li.confirm			            { background: $confirmColor url(/img/all-icons.<%= datetimeraw %>.svg#confirm) 0.8em center / 1.5em no-repeat; }
+ol.notifications li.warning			            { background: $warningColor url(/img/all-icons.<%= datetimeraw %>.svg#warning) 0.8em center / 1.5em no-repeat; }
+ol.notifications li.error			            { background: $errorColor url(/img/all-icons.<%= datetimeraw %>.svg#error) 0.8em center / 1.5em no-repeat; }
+ol.notifications a:link,
+ol.notifications a:visited				        { color: $bodyTextLightColor; text-decoration: underline; }
+ol.notifications a:hover,
+ol.notifications a:active				        { color: $bodyTextColor; text-decoration: underline; }
+
+input:focus,
+button:focus									{ outline: 0; }
+button                                          { cursor: pointer; }
+
+@include for-size(max-tablet-portrait) {
+	.fullheight									{ grid-template-rows: auto min-content; padding-top: 114px; }
+}
+
+@include for-size(max-tablet-portrait) {
+    main									    { padding-left: $bodyPaddingToSideMinimal; padding-right: $bodyPaddingToSideMinimal; }
+}
+
+@include for-size(desktop-up) {
+    .content                                    { width: 1032px; }
+}
+
+@include for-size(desktop-large-up) {
+    .content                                    { width: 1416px; }
+}
+
+@include for-size(phone-only) {
+    body                                        { font-size: 16px; }
+	div.actions								    { position: static; }
+}

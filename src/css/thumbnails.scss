@@ -1,0 +1,34 @@
+
+@import 'theme-colours';
+@import 'media-queries';
+
+div.thumbnails								{ margin: 0 -1 * $spacingBetweenThumbnails -1 * $spacingBetweenThumbnails 0; }
+div.thumbnails ul							{ display: flex; justify-content: flex-start; flex-wrap: wrap; }
+div.thumbnails ul > li						{ display: block; width: 275px; margin: 0 $spacingBetweenThumbnails $spacingBetweenThumbnails 0; text-align: center; }
+div.thumbnails ul > li .cont				{ position: relative; width: 100%; padding-bottom: 100%; }
+div.thumbnails ul > li .slide				{ position: absolute; width: 100%; height: 100%; text-align: center; box-sizing: border-box; padding: 4px; background-color: $siteBackgroundColor; border-radius: 6px; border-top: 1px solid $mediumAccent; border-left: 1px solid $mediumAccent; border-right: 2px solid $darkAccent; border-bottom: 2px solid $darkAccent; }
+div.thumbnails ul > li .slide a				{ width: 100%; height: 100%; vertical-align: middle; display: inline-block; transform-style: preserve-3d; }
+div.thumbnails ul > li .exceedlimit         { border-color: #FF0000; background-color: #FFD9D9; }
+div.thumbnails ul > li img					{ position: relative; top: 50%; transform: translateY(-50%); vertical-align: middle; max-width: 100%; max-height: 100%; }
+div.thumbnails li.hidden			        { display: none; }
+div.thumbnails img                          { overflow: hidden; }
+div.thumbnails img.deleted			        { opacity: 0.2; }
+
+div.eventtitle                              { display: flex; align-items: center; }
+div.eventtitle .eventsessions               { margin: 0 0 0.35em 5em; line-height: 1.8em; }
+
+.eventsessions ul li                            { position: relative; display: inline-block; padding: 0 1em 0 0.3em; font-size: 16px; color: $eventSessionsLinksColor; }
+.eventsessions ul li:after                      { position: absolute; content: '-'; right: 0; color: $eventSessionsLinksSeparatorColor; }
+.eventsessions ul li:last-child::after          { display: none; }
+
+@include for-size(max-tablet-portrait) {
+    div.eventtitle                          { flex-flow: row wrap; }
+    div.eventtitle .eventsessions           { margin-left: -0.3em; }
+}
+
+@media (hover: hover) {
+    div.thumbnails ul > li .slide a::before         { display: none; position: absolute; z-index: 10; top: 0; bottom: 0; left: 0; right: 0; content: ' '; background-color: rgba(255, 255, 255, 0.85); }
+    div.thumbnails ul > li .slide a::after          { display: none; position: absolute; z-index: 11; top: 50%; transform: translateY(-50%); left: 0; right: 0; padding: 6px; content: attr(data-caption); color: $bodyTextColor; font-weight: bold; overflow: hidden; max-width: 100%; max-height: 100%; }
+    div.thumbnails ul > li .slide a:hover::before   { display: block; }
+    div.thumbnails ul > li .slide a:hover::after    { display: block; }
+}

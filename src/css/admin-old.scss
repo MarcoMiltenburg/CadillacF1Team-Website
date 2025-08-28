@@ -1,0 +1,135 @@
+div.tablerow span.username,
+div.tabletitle span.username,
+a.tablerow span.username				{ width: 40%; }
+div.tablerow span.companyname,
+div.tabletitle span.companyname,
+a.tablerow span.companyname				{ width: 50%; }
+div.tablerow span.downloads,
+div.tabletitle span.downloads,
+a.tablerow span.downloads				{ width: 10%; }
+div.tablerow span.sessionid,
+div.tabletitle span.sessionid,
+a.tablerow span.sessionid				{ width: 70px; }
+div.tablerow span.ipaddress,
+div.tabletitle span.ipaddress,
+a.tablerow span.ipaddress				{ width: 90px; }
+div.tablerow span.lastactivity,
+div.tabletitle span.lastactivity,
+a.tablerow span.lastactivity			{ width: 372px; margin: 0px 0px 2px 0px; }
+div.tablerow span.pageviews,
+div.tabletitle span.pageviews,
+a.tablerow span.pageviews				{ width: 92px; }
+div.tablerow span.firstpageview,
+div.tabletitle span.firstpageview,
+a.tablerow span.firstpageview			{ width: 180px; }
+div.tablerow span.lastpageview,
+div.tabletitle span.lastpageview,
+a.tablerow span.lastpageview			{ width: 180px; margin: 0px 0px 2px 0px; }
+div.tablerow span.eventcode,
+div.tabletitle span.eventcode,
+a.tablerow span.eventcode				{ width: 30%; }
+div.tablerow span.session,
+div.tabletitle span.session,
+a.tablerow span.session					{ width: 30%; }
+div.tablerow span.startdate,
+div.tabletitle span.startdate,
+a.tablerow span.startdate				{ width: 20%; }
+div.tablerow span.enddate,
+div.tabletitle span.enddate,
+a.tablerow span.enddate					{ width: 20%; margin: 0px 0px 2px 0px; }
+
+div.tablerow,
+div.tabletitle,
+a.tablerow								{ display: flex; }
+
+div.tabletitle span						{ background-color: #000000; color: #ffffff; margin: 0px 2px 2px 0px; padding: 2px 4px 2px 4px; }
+div.tablerow span, a.tablerow span		{ background-color: #93b2c6; color: #ffffff; margin: 0px 2px 2px 0px; padding: 2px 4px 2px 4px; }
+
+a.tablerow:hover span					{ background-color: #f2f6f9; color: #000000; }
+
+#contentarea a.tablerow			{ text-decoration: none; }
+#contentarea a.tablerow:hover,
+#contentarea a.tablerow:active	{ text-decoration: none; }
+
+#downloadedthumbnails				{ background-color: #f2f6f9; padding: 5px 5px 1px 5px; }
+
+.downloadthumbnailbottom			{ width: 100%; background-color: #d3e0e8; border-radius: 5px; margin-bottom: 5px; }
+.downloadthumbnailtop				{ width: 100%; display: flex; padding: 10px 10px 5px 10px; }
+
+.downloadthumbnailinfo				{ width: 60%; margin: 0px 0px 0px 5px; }
+.downloadthumbnailinfo p			{ width: 100%;  }
+.downloadthumbnailinfo p span.title	{ display: inline-block; width: 25% }
+.downloadthumbnailinfo p span.value	{ display: inline-block; color: #677d8b; font-weight: bold; }
+
+.eventlinebottom					{ width: 100%; max-width: 1020px; background-color: #f2f6f9; border-radius: 5px; padding: 10px 10px 0 10px; box-sizing: border-box; }
+.eventlinetop						{ width: 100%; padding: 5px 10px 5px 10px; border-radius: 5px; background-color: #d3e0e8; box-sizing: border-box; }
+
+.tablecontentbottom					{ width: 100%; max-width: 1020px; background-color: #f2f6f9; border-radius: 5px; padding: 10px 10px 0 10px; box-sizing: border-box; }
+.tablecontenttop					{ width: 100%; padding: 5px 10px 5px 10px;border-radius: 5px; background-color: #d3e0e8; box-sizing: border-box; }
+
+.thumbnailsbottom					{ width: 100%; max-width: 1020px; background-color: #f2f6f9; border-radius: 5px; padding: 10px 10px 0 10px; box-sizing: border-box; }
+.thumbnailstop						{ width: 100%; padding: 5px 10px 5px 10px;border-radius: 5px; background-color: #d3e0e8; box-sizing: border-box; }
+
+.selectionfilter									{ }
+.selectionfilter fieldset							{ display: flex; align-items: center; }
+.selectionfilter label 								{  }
+.selectionfilter label span							{  width: auto !important; padding-top: 2px; }
+.selectionfilter input.text							{ height: 32px; min-height: 32px; box-sizing: border-box; }
+.selectionfilter select								{ width: 60px; margin: 0 4px 0 0; min-height: 32px; }
+.selectionfilter select.selectmonth					{ width: 120px; }
+.selectionfilter select.selectuser					{ width: 320px; margin: 0 30px 0 0; }
+.selectionfilter select.selectviewevents			{ width: 150px; margin: 0px 4px 0px 10px;}
+.selectionfilter input.search						{  margin: 0px 0px 0px 10px; padding: 0px; }
+.selectionfilter input.pictureid					{ width: 98px; margin: 0px 4px 0px 10px; }
+.selectionfilter input.edit							{  margin: 0px 20px 0px 10px; padding: 0px; }
+.selectionfilter a.previousday						{  margin: 0px 0px 0px 30px; padding: 0px; }
+.selectionfilter a.nextday							{  margin: 0px 0px 0px 10px; padding: 0px; }
+.selectionfilter a.previous							{  margin: 0px 0px 0px 30px; padding: 0px; }
+.selectionfilter a.next								{  margin: 0px 0px 0px 10px; padding: 0px; }
+
+.datetimefields							{ margin: 0px 0px 5px 0px; width: 100%; }
+.datetimefields select.selectday		{ width: 60px; height: 32px; margin: 0px 2px 0px 0px; }
+.datetimefields select.selectmonth		{ width: 100px; height: 32px; margin: 0px 2px 0px 0px; }
+.datetimefields select.selectyear		{ width: 60px; height: 32px; margin: 0px; }
+
+.downloadslabel					{ display: inline-block; padding-right: 4px; width: 25%; }
+
+input.savecaption				{ float: left; margin: 0px; padding: 0px; }
+input.savenext					{ float: right; margin: 0px 0px 0px 0px; padding: 0px; }
+input.saveprevious				{ float: right; margin: 0px 0px 0px 10px; padding: 0px; }
+
+label.titleonly					{ width: 100%; background: none; }	/* IE6 fix */
+label.titleonly span			{  }
+label.fullwidth					{ display: flex; width: 100%; background: none; }	/* IE6 fix */
+label.fullwidth span			{ display: inline-block; width: 20%; padding-top: 1px; }
+label.fullwidth input.text,
+label.fullwidth textarea.text	{ width: 100%; min-height: 32px; border: 1px solid #93b2c6; border-style: inset; margin: 0px 0px 5px 0px; }
+label.fullwidth input.checkbox	{ margin: 0px 0px 5px 0px; min-height: 32px; }
+label.fullwidth select			{ width: 550px; min-height: 32px; border: 1px solid #93b2c6; border-style: inset; margin: 0px 0px 5px 0px; }
+
+.fullwidthfields fieldset		{ display: flex; flex-wrap: wrap; gap: 10px; }
+
+select option.expired			{ color: #777; }
+select option.disabled			{ color: #aaa; }
+
+.text3wide						{ width: 32%; min-height: 32px; border: 1px solid #93b2c6; box-sizing: border-box; }
+.text5wide						{ width: 19%; min-height: 32px; border: 1px solid #93b2c6; box-sizing: border-box; }
+
+.buttons						{ width: 100%; max-width: 1020px; display: flex; margin: 10px 0px; justify-content: space-between}
+button,
+.button							{ display: inline-block; padding: 4px 10px; box-sizing: border-box; line-height: 1.6; border: none; border-radius: 3px;  color: #fff; background-color: #ff8000; }
+.button:link,
+.button:active,
+.button:hover,
+.button:visited                 { color: #fff; text-decoration: none; }
+
+/* Styling Fixes */
+fieldset						{ border: none; }
+.nomargin						{ margin: 0px; }
+.notopmargin					{ margin-top: 0px; }
+.norightmargin					{ margin-right: 0px; }
+.nobottommargin					{ margin-bottom: 0px; }
+.bottommargin					{ margin-bottom: 10px; }
+.floatleft						{ float: left; }
+.clearAll						{ clear: both; }
+.error							{ color: #EE0000; }

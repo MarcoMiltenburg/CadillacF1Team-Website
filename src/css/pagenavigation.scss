@@ -1,0 +1,48 @@
+
+@import 'theme-colours';
+@import 'media-queries';
+
+ol.pagenavigation						{ margin: 10px 0; display: flex; justify-content: center; font-size: 0; }
+ol.pagenavigation:last-child            { margin-top: 30px; }
+ol.pagenavigation li a                  { font-size: $bodyTextFontSize; }
+ol.pagenavigation li a:link,
+ol.pagenavigation li a:visited		    { text-decoration: none; color: $pageNavigationTextColor; background-color: $pageNavigationBackgroundColor; }
+ol.pagenavigation li a:hover,
+ol.pagenavigation li a:active			{ text-decoration: none; color: $pageNavigationTextHoverColor; background-color: $pageNavigationHoverBackgroundColor; }
+ol.pagenavigation li					{ text-align: left; display: block; }
+ol.pagenavigation li.previous,
+ol.pagenavigation li.next               { min-width: $pageNavigationHeight + 6 + 2; }
+ol.pagenavigation li.next				{ text-align: right; }
+ol.pagenavigation li.previous li,
+ol.pagenavigation li.next li,
+ol.pagenavigation li.pages li			{ display: inline; margin: 0 2px; }
+
+ol.pagenavigation a						{ display: inline-block; background-color: $siteBackgroundColor; min-width: $pageNavigationHeight; line-height: $pageNavigationHeight; text-align: center; border-radius: 4px; }
+ol.pagenavigation a:link,
+ol.pagenavigation a:visited				{ border: 1px solid $pageNavigationBorderColor; }
+ol.pagenavigation a:hover,
+ol.pagenavigation a:active				{ border: 1px solid $pageNavigationHoverBorderColor; }
+
+ol.pagenavigation li.pages a.current	{ background-color: $pageNavigationActiveBackgroundColor; color: $pageNavigationActiveTextColor; border: 1px solid $pageNavigationActiveBackgroundColor; }
+ol.pagenavigation li.previous a,
+ol.pagenavigation li.next a				{ display: inline-block; width: $pageNavigationHeight; height: $pageNavigationHeight; background-repeat: no-repeat; background-size: 1em; }
+ol.pagenavigation li.previous a	        { background-image: url(/img/all-icons.<%= datetimeraw %>.svg#arrow-left); background-position: 8px center; }
+ol.pagenavigation li.next a     		{ background-image: url(/img/all-icons.<%= datetimeraw %>.svg#arrow-right); background-position: 10px center; }
+ol.pagenavigation li.previous a.fast	{ background-image: url(/img/all-icons.<%= datetimeraw %>.svg#doublearrows-left); background-position: 8px center; }
+ol.pagenavigation li.next a.fast		{ background-image: url(/img/all-icons.<%= datetimeraw %>.svg#doublearrows-right); background-position: 10px center; }
+ol.pagenavigation li.previous a:hover,
+ol.pagenavigation li.previous a:active			{ background-image: url(/img/all-icons.<%= datetimeraw %>.svg#arrow-left-hl); }
+ol.pagenavigation li.next a:hover,
+ol.pagenavigation li.next a:active				{ background-image: url(/img/all-icons.<%= datetimeraw %>.svg#arrow-right-hl); }
+ol.pagenavigation li.previous a.fast:hover,
+ol.pagenavigation li.previous a.fast:active		{ background-image: url(/img/all-icons.<%= datetimeraw %>.svg#doublearrows-left-hl ); }
+ol.pagenavigation li.next a.fast:hover,
+ol.pagenavigation li.next a.fast:active			{ background-image: url(/img/all-icons.<%= datetimeraw %>.svg#doublearrows-right-hl ); }
+
+ol.pagenavigation a.disabled			{ filter: grayscale(1); pointer-events: none; opacity: 0.3; }
+
+@include for-size(phone-only) {
+	ol.pagenavigation > li.next,
+	ol.pagenavigation > li.previous		{ width: 50%; }
+	ol.pagenavigation > li.pages		{ display: none; }
+}

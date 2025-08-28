@@ -1,0 +1,60 @@
+<SCRIPT LANGUAGE=VBScript RUNAT=Server>
+
+Sub Application_OnStart
+
+    DevelopmentEnvironment = True
+    'DevelopmentEnvironment = False
+
+    Application("UseStrictGroupsAccess") = False
+    Application("UseStrictSeriesAccess") = False
+    Application("UseOriginalFilenameForDownloads") = False
+
+    Application("PictureFilenamePrefix") = "CadillacF1Team"
+    Application("SessionCookieName") = "XLpics1CadillacF1TeamSession"
+    Application("PermanentCookieName") = "XLpics1CadillacF1TeamPermanent"
+    Application("SessionExpireHours") = 24
+
+    If DevelopmentEnvironment Then
+        Application("PicturesDirectory") = "C:\Inetpub\Servers\www.cadillacf1team.media\pictures"
+        Application("ThumbnailsDirectory") = "C:\Inetpub\Servers\www.cadillacf1team.media\thumbnails"
+        Application("TemporaryStorageDirectory") = "C:\Inetpub\Servers\www.cadillacf1team.media\temp\basket"
+
+        Application("DatabaseConnectString") = "Provider=SQLOLEDB;Data Source=DEV4\DEV4;DATABASE=CadillacF1Team;User Id=xlpics_cadillacf1team_anonymous;Password=jwvjvx7XV1wOrcWMNxHffS!x;Connect Timeout=3;network library=dbmssocn;"
+        Application("MailPickupDirectory") = "C:\Inetpub\Mailroot\Pickup"
+
+        Application("SessionCookieDomain") = ""
+        Application("PermanentCookieDomain") = ""
+
+        Application("EnableDateTimeEncodedLinks") = False
+    Else
+        Application("PicturesDirectory") = "D:\XLpics\CadillacF1Team\Pictures"
+        Application("ThumbnailsDirectory") = "D:\XLpics\CadillacF1Team\Thumbnails"
+        Application("TemporaryStorageDirectory") = "C:\XLpics\Temp\CadillacF1Team\Basket"
+
+        Application("DatabaseConnectString") = "Provider=SQLNCLI11;Data Source=.\WEB3;DATABASE=CadillacF1Team;User Id=xlpics_cadillacf1team_anonymous;Password=jwvjvx7XV1wOrcWMNxHffS!x;Connect Timeout=3;"
+        Application("MailPickupDirectory") = "C:\inetpub\mailroot\Pickup"
+
+        Application("SessionCookieDomain") = "cadillacf1team.media"
+        Application("PermanentCookieDomain") = "cadillacf1team.media"
+
+        Application("EnableDateTimeEncodedLinks") = True
+    End If
+
+    Application("FullCaptionRemoval") = "- cadillacf1team.media"
+
+    Application("FirstSeason") = 2025
+    Application("DefaultSeason") = 2025
+    Application("NrOfWeekToShowEventsOf") = 12
+
+    Application("ForceUserToBeLoggedIn") = True
+    Application("UsePasswordSaltAndHash") = False
+    Application("SystemWidePasswordSalt") = ""
+
+    Application("DefaultSortOrder") = 0
+
+    Application("GridThumbnailSizeID") = 1
+    Application("ViewThumbnailSizeID") = 2
+
+End Sub
+
+</SCRIPT>

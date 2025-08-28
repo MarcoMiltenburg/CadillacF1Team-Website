@@ -1,0 +1,123 @@
+/* Cadillac F1 Team Colors */
+$cadillacAmericanRacingWhite: #F5F5F5;
+$cadillacBlackCarbon: #000000;
+$cadillacTrueBlue: #041E42;
+$cadillacFlagRed: #900B14;
+
+$basketErrorColor: #ff8080;
+$basketSuccessColor: #80ff80;
+
+
+/* Global Colors */
+$globalDarkGray: #373636;
+$globalMidGray: #BBBABA;
+$globalLightGray: #F0F0F0;
+
+$siteBackgroundColor: #FFF;
+$bodyTextColor: $cadillacBlackCarbon;
+$bodyTextLightColor: #FFFFFF;
+
+$titleColor: $cadillacTrueBlue;
+$highlightColor: $cadillacTrueBlue;
+
+$linkTextColor: $highlightColor;
+$linkTextHoverColor: $highlightColor;
+
+$buttonTextColor: $bodyTextLightColor;
+$buttonBackgroundColor: $globalDarkGray;
+$buttonDefaultTextColor: $bodyTextLightColor;
+$buttonDefaultBackgroundColor: $cadillacTrueBlue;
+$buttonDisabledTextColor: $bodyTextLightColor;
+$buttonDisabledBackgroundColor: $globalMidGray;
+
+$headerTextColor: $bodyTextColor;
+$headerBackgroundColor: $siteBackgroundColor;
+$headerSearchActiveBorderColor: $cadillacTrueBlue;
+$headerSearchInactiveBorderColor: $globalMidGray;
+$headerSearchBackgroundColor: $cadillacAmericanRacingWhite;
+$headerSearchButtonBackgroundColor: $cadillacTrueBlue;
+
+$menuButtonTextColor: $bodyTextColor;
+$menuButtonBorderColor: $globalMidGray;
+$menuButtonBackgroundColor: $siteBackgroundColor;
+$menuButtonActiveTextColor: $cadillacTrueBlue;
+$menuButtonActiveBorderColor: $cadillacTrueBlue;
+$menuButtonActiveBackgroundColor: $siteBackgroundColor;
+
+$menuNavTextColor: $bodyTextLightColor;
+$menuNavBackgroundColor: $cadillacBlackCarbon;
+
+$menuNavLinkTextColor: $bodyTextLightColor;
+$menuNavLinkTextHoverColor: $bodyTextLightColor;
+$menuNavLinkBulletColor: $cadillacTrueBlue;
+
+$menuNavHeaderTextColor: $bodyTextLightColor;
+$menuNavHeaderTextFontWeight: 700;
+$menuNavHeaderBackgroundColor: inherit;
+
+$menuOtherLinkTextColor: $menuNavLinkTextColor;
+$menuOtherLinkTextHoverColor: $menuNavLinkTextColor;
+
+$shortcutsTextColor: $bodyTextColor;
+$shortcutsTextHoverColor: $bodyTextColor;
+$shortcutsBackgroundColor: transparent;
+$shortcutsHoverBackgroundColor: $cadillacAmericanRacingWhite;
+$shortcutsCountBadgeTextColor: $bodyTextLightColor;
+$shortcutsCountBadgeBackgroundColor: $highlightColor;
+$shortcutsBasketErrorBackgroundColor: $basketErrorColor;
+$shortcutsBasketAddedBackgroundColor: $basketSuccessColor;
+
+$footerTextColor: $globalMidGray;
+$footerLinkTextColor: $cadillacTrueBlue;
+$footerLinkTextHoverColor: $cadillacTrueBlue;
+$footerBackgroundColor: $siteBackgroundColor;
+
+$blocksBackgroundColor: $cadillacAmericanRacingWhite;
+$blockDetailsBackgroundColor: $siteBackgroundColor;
+
+$eventSummaryTitleColor: $titleColor;
+$eventSummaryTitleHoverColor: $titleColor;
+$eventSummaryDateColor: $bodyTextColor;
+$eventSessionsLinksColor: $globalDarkGray;
+$eventSessionsLinksSeparatorColor: $globalMidGray;
+
+$formsFieldTitleColor: $highlightColor;
+
+$pageNavigationTextColor: $bodyTextColor;
+$pageNavigationTextHoverColor: $cadillacTrueBlue;
+$pageNavigationBackgroundColor: transparent;
+$pageNavigationHoverBackgroundColor: transparent;
+$pageNavigationBorderColor: $pageNavigationTextColor;
+$pageNavigationHoverBorderColor: $pageNavigationTextHoverColor;
+$pageNavigationActiveTextColor: $bodyTextLightColor;
+$pageNavigationActiveBackgroundColor: $cadillacTrueBlue;
+$pageNavigationActiveBorderColor: $pageNavigationTextHoverColor;
+
+$downloadLinkTextColor: $cadillacTrueBlue;
+$downloadLinkTextDecoration: none;
+$downloadLinkTextHoverColor: $cadillacTrueBlue;
+$downloadLinkTextHoverDecoration: underline;
+
+$confirmColor: $cadillacTrueBlue;
+$warningColor: $cadillacFlagRed;
+$errorColor: $cadillacFlagRed;
+
+$lightAccent: $globalLightGray;
+$mediumAccent: $globalMidGray;
+$darkAccent: $globalDarkGray;
+
+$lightBackground: $globalLightGray;
+$mediumBackground: $globalMidGray;
+$darkBackground: $cadillacBlackCarbon;
+
+/* Font Size */
+$bodyTextFontSize: 14px;
+
+/* Sizes */
+$bodyPaddingToSideMinimal: 10px;
+$bodyPaddingToSideRegular: 2 * $bodyPaddingToSideMinimal;
+
+$spacingBetweenThumbnails: 6px;
+$pageNavigationHeight: 32px;
+
+$thumbnailLargeWidth: 864px;

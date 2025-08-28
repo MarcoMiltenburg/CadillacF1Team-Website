@@ -1,0 +1,44 @@
+{
+  "name": "cadillacf1team.media",
+  "version": "0.1.0",
+  "description": "Cadillac Formula 1® Team Media Website",
+  "main": "wwwroot/index.asp",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Virtual Pages",
+    "url": "https://www.virtualpages.nl"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ],
+  "devDependencies": {
+    "array-union": "^2.1.0",
+    "browser-sync": "^2.29.3",
+    "browser-sync-client": "^2.29.3",
+    "browser-sync-ui": "^2.29.3",
+    "dateformat": "^4.6.3",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-ejs": "^5.1.0",
+    "gulp-if": "^3.0.0",
+    "gulp-inject-string": "^1.1.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-replace": "^1.1.4",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-utf8-convert": "0.0.7",
+    "gulp-watch": "^5.0.1",
+    "sass": "^1.78.0"
+  },
+  "dependencies": {
+    "normalize": "^0.3.1"
+  }
+}
