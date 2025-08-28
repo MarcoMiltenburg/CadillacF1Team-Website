@@ -1,0 +1,10 @@
+node_modules/
+wwwroot/css/*
+!wwwroot/css/web.config
+wwwroot/js/*
+!wwwroot/js/web.config
+wwwroot/img/favicons/*
+wwwroot/includes/version.asp
+wwwroot/browserconfig.xml
+wwwroot/favicon.ico
+wwwroot/site.webmanifest
