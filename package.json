@@ -1,7 +1,7 @@
 {
   "name": "cadillacf1team.media",
-  "version": "0.1.0",
-  "description": "Cadillac Formula 1® Team Media Website",
+  "version": "1.0.1",
+  "description": "Cadillac Formula 1Â© Team Media Website",
   "main": "wwwroot/index.asp",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

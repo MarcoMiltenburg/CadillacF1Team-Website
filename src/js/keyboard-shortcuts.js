@@ -7,7 +7,7 @@
 		e = e || window.event;
 
 		// Exit early if a modifier key was also pressed (except Ctrl)
-		if (e.shiftKey || e.altKey || e.altKey)
+		if (e.shiftKey || e.altKey || e.altKey || e.metaKey)
 			return;
 		
 		// left arrow
