@@ -43,7 +43,7 @@ Sub Application_OnStart
     Application("FullCaptionRemoval") = "- cadillacf1team.media"
 
     Application("FirstSeason") = 2025
-    Application("DefaultSeason") = 2025
+    Application("DefaultSeason") = 2026
     Application("NrOfWeekToShowEventsOf") = 12
 
     Application("ForceUserToBeLoggedIn") = True
