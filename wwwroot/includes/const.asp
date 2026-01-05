@@ -10,7 +10,7 @@
 
 	Select Case SeriesID
 
-		Case CadillacF1TeamSeriesID_F1:		Seasons = Array(2025)
+		Case CadillacF1TeamSeriesID_F1:		Seasons = Array(2025, 2026)
 
 	End Select
 
