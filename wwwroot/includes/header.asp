@@ -33,6 +33,17 @@
 
     End If
 
+%>				<div class="navheader">Miscellaneous</div>
+				<ul>
+					<li><a href="/search?q=DriverImagery">Driver imagery</a></li>
+					<li><a href="/search?q=SilverstoneFactory">Silverstone Factory</a></li>
+					<li><a href="/search?q=TeamPersonnel">Team Personnel</a></li>
+					<li><a href="/search?q=GraemeLowdon">Graeme Lowdon</a></li>
+					<li><a href="/search?q=DanTowriss">Dan Towriss</a></li>
+				</ul>
+
+<%
+
 	If XLpics.UserLoggedIn And XLpics.UserProfile_AdminEnabled And XLpics.HasAdminGroup("XPBAdmin") Then
 	
 %>				<div class="navheader">Admin</div>
