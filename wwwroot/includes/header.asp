@@ -23,7 +23,7 @@
 
         For i = UBound(Seasons) To 0 Step -1
         
-%>						<li<% If (Seasons(i) = XLpics.Season) Then %> class="currentseason"<% End If %>><a href="/?season=<%=Seasons(i)%>"><%=Server.HTMLEncode(GetSeasonName(Seasons(i), False))%></a></li>
+%>						<li<% If (Seasons(i) = XLpics.Season) Then %> class="currentseason"<% End If %>><a href="/?season=<%=Seasons(i)%>"><%=Server.HTMLEncode(GetSeasonName(Seasons(i), True))%></a></li>
 <%
 
         Next
