@@ -36,6 +36,7 @@
 %>				<div class="navheader">Miscellaneous</div>
 				<ul>
 					<li><a href="/search?q=DriverImagery">Driver imagery</a></li>
+					<li><a href="/event/f1-2026-racesuits">Race Suits</a></li>
 					<li><a href="/search?q=SilverstoneFactory">Silverstone Factory</a></li>
 					<li><a href="/search?q=TeamPersonnel">Team Personnel</a></li>
 					<li><a href="/search?q=GraemeLowdon">Graeme Lowdon</a></li>
