@@ -1,6 +1,6 @@
 {
   "name": "cadillacf1team.media",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Cadillac Formula 1© Team Media Website",
   "main": "wwwroot/index.asp",
   "scripts": {
