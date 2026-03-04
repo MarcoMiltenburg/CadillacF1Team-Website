@@ -55,6 +55,7 @@
     Const XLpicsAdminPage_ToggleExclusiveGroup = 1011
 	Const XLpicsAdminPage_TogglePictureStatus = 1012
 	Const XLpicsAdminPage_TogglePictureTopShot = 1013
+	Const XLpicsAdminPage_GetExclusiveGroups = 1014
 	
     Const XLpicsPictureCollectionField_PictureID = 0
     Const XLpicsPictureCollectionField_Width = 1
