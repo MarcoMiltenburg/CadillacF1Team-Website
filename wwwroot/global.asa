@@ -54,6 +54,8 @@ Sub Application_OnStart
 
     Application("GridThumbnailSizeID") = 1
     Application("ViewThumbnailSizeID") = 2
+	
+	Application("ListOfPartners") = Array(Array("TWG AI", "TWGAI"), Array("Claro", "Claro"), Array("Core Scientific", "CoreScientific"), Array("IFS", "IFS"), Array("Jim Beam", "JimBeam"), Array("Tenneco", "Tenneco"), Array("Tommy Hilfiger", "TommyHilfiger"), Array("Pirelli", "Pirelli"), Array("Alpinestars", "Alpinestars"))
 
 End Sub
 

@@ -87,7 +87,7 @@
 
 %>							<ol class="icons extrarow">
 								<li><a href="#" data-href="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>?group=Media" class="exclusivegroup media<% If (XLPics.IsInArray(XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_ExclusiveGroups), "Media")) Then Response.Write(" enabled") %>" title="Toggle Media availability"><span>Toggle Media availability</span></a></li>
-								<li><a href="#" data-href="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>?group=Partners" class="exclusivegroup partners<% If (XLPics.IsInArray(XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_ExclusiveGroups), "Partners")) Then Response.Write(" enabled") %>" title="Toggle Partners availability"><span>Toggle Partners availability</span></a></li>
+								<li><a href="#" data-basehref="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" data-statushref="/admin/get-exclusive-groups/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" class="partnersselector partners" title="Toggle Partners availability"><span>Toggle Partners availability</span></a></li>
 								<li><a href="#" data-href="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>?group=Internal" class="exclusivegroup internal<% If (XLPics.IsInArray(XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_ExclusiveGroups), "Internal")) Then Response.Write(" enabled") %>" title="Toggle Internal availability"><span>Toggle Internal availability</span></a></li>
 								<li><a href="#" data-href="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>?group=Drivers" class="exclusivegroup drivers<% If (XLPics.IsInArray(XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_ExclusiveGroups), "Drivers")) Then Response.Write(" enabled") %>" title="Toggle Drivers availability"><span>Toggle Drivers availability</span></a></li>
                             </ol>
@@ -105,5 +105,27 @@
 
 %>					</ul>
 
+				</div>
+				
+				<div id="partnersselector">
+					<div class="partnerslist">
+						<ol>
+<%
+
+			For i = 0 To UBound(Application("ListOfPartners"))
+			
+%>							<li><a href="#" data-group="<%=Server.HTMLEncode(Application("ListOfPartners")(i)(1))%>" class="partnerstoggle"><%=Server.HTMLEncode(Application("ListOfPartners")(i)(0))%></a></li>
+<%		
+
+			Next
+
+%>						</ol>
+					</div>
+					<ol class="form">
+						<li class="buttons center">
+							<button class="close" type="button">Close</button>
+						</li>
+					</ol>
+					<input id="partnerselector-basehref" type="hidden" name="partnerselector-basehref" value="">
 				</div>
 

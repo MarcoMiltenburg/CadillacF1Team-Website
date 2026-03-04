@@ -20,6 +20,7 @@ main div:first-child                            { position: relative; }
 .sectiontitle									{ display: block; margin: 0 0 0.8em 0; font-size: 16px; font-weight: bold; }
 
 #overlay										{ position: absolute; top: 0; width: 100%; height: 100%; z-index: 2000; background-color: #000; opacity: 0; display: none; transition: opacity 0.5s ease-in-out; }
+#overlay2										{ position: absolute; top: 0; width: 100%; height: 100%; z-index: 3999; background-color: #000; opacity: 0; display: none; }
 
 div.actions						                { position: absolute; top: 10px; right: 0; margin-bottom: 10px; }
 div.actions a					                { display: inline-block; padding: 0 10px; background-color: $siteBackgroundColor; line-height: $pageNavigationHeight; text-align: center; border-radius: 4px; }
@@ -47,6 +48,9 @@ ol.form button:disabled                         { background-color: $buttonDisab
 ol.form li.buttons					            { text-align: right; margin-top: 20px; }
 ol.form li.buttons.opposite			            { text-align: left; }
 ol.form li.buttons.opposite button              { margin: 0 5px 0 0; }
+ol.form li.buttons.center			            { text-align: center; }
+ol.form li.buttons.center button              	{ margin: 0 2px 0 3px; }
+
 ol.form li.error label,
 ol.form li.error input,
 ol.form li.error textarea,
