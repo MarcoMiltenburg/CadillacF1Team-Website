@@ -147,24 +147,17 @@ $hamburgerItemSpacing: $hamburgerItemHeight + 1;
 */
 
 @include for-size(max-tablet-landscape) {
-	header										{ grid-template-columns: 1.5fr auto 1.2fr; }
+	header										{ grid-template-areas: 'logo shortcuts' 'search search'; grid-template-columns: 1fr auto; grid-template-rows: 42px; padding-left: $bodyPaddingToSideMinimal; padding-right: $bodyPaddingToSideMinimal; }
+	header .search								{ width: 100%; max-width: auto; margin-top: 10px; }
 }
 
 @include for-size(max-tablet-portrait) {
-	header										{ grid-template-areas: 'logo shortcuts' 'search search'; grid-template-columns: 1fr auto; grid-template-rows: 42px; padding-left: $bodyPaddingToSideMinimal; padding-right: $bodyPaddingToSideMinimal; }
-
     .navigation label							{ left: $bodyPaddingToSideMinimal; }
 
-	header .search								{ width: 100%; max-width: auto; margin-top: 10px; }
-	
 	.navigation label							{ width: auto; }
 	.navigation label i							{ display: none; }
 	
 	.navigation .home							{ left: auto; right: $bodyPaddingToSideMinimal; }
-}
-
-@include for-size(tablet-landscape-up) {
-	header .search								{ width: 300px; }
 }
 
 @include for-size(desktop-up) {
