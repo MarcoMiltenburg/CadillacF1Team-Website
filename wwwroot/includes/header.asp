@@ -122,7 +122,7 @@
 			End If
 		End If
 
-%>			<a href="/logout" class="account" aria-label="Logout"><div><span>Logout</span></div></a>
+%>			<a href="/logout" class="account" aria-label="Logout"><div><span>Logout</span><em><%=Server.HTMLEncode(XLpics.UserProfile_UserName)%></em></div></a>
 			<a href="/basket" id="downloadbasket" class="download" data-count="<%=DownloadBasketTotalPictures%>" aria-label="Download basket"><div><span>Download basket</span><em><%=DownloadBasketTotalPictures%> photo<% If (DownloadBasketTotalPictures <> 1) Then Response.Write("s") %></em></div></a>
 <%
 

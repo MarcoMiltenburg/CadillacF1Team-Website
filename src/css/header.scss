@@ -117,11 +117,13 @@ $hamburgerItemSpacing: $hamburgerItemHeight + 1;
 .shortcuts a:visited							{ color: $shortcutsTextColor; text-decoration: none; background-color: $shortcutsBackgroundColor; }
 .shortcuts a:hover,	
 .shortcuts a:active								{ color: $shortcutsTextHoverColor; text-decoration: none; background-color: $shortcutsHoverBackgroundColor; }
-.shortcuts a em									{ display: block; font-style: normal; }
+.shortcuts a em									{ display: block; font-style: normal; font-size: 0.9em; }
 .shortcuts a span								{ display: block; font-weight: bold; }
 .shortcuts a div								{ display: flex; justify-content: center; align-items: center; box-sizing: border-box; height: 42px; padding: 4px 6px; border-radius: 3px; }
-.shortcuts a.account div						{ padding-left: 36px; background: url(/img/all-icons.<%= datetimeraw %>.svg#account) no-repeat 6px center; background-size: 1.5em; }
-.shortcuts a.download div						{ flex-direction: column; align-items: flex-start; padding-left: 36px; background: url(/img/all-icons.<%= datetimeraw %>.svg#download) no-repeat 6px center; background-size: 1.5em; }
+.shortcuts a.account div						{ background: url(/img/all-icons.<%= datetimeraw %>.svg#account) no-repeat 6px center; }
+.shortcuts a.download div						{ background: url(/img/all-icons.<%= datetimeraw %>.svg#download) no-repeat 6px center; }
+.shortcuts a.account div,
+.shortcuts a.download div						{ flex-direction: column; align-items: flex-start; padding-left: 36px; background-size: 1.5em; }
 .shortcuts a.download div.added					{ animation: download-basket-added 1s forwards; }
 .shortcuts a.download div.error					{ animation: download-basket-error 1s forwards; }
 
@@ -145,24 +147,17 @@ $hamburgerItemSpacing: $hamburgerItemHeight + 1;
 */
 
 @include for-size(max-tablet-landscape) {
-	header										{ grid-template-columns: 1.5fr auto 1.2fr; }
+	header										{ grid-template-areas: 'logo shortcuts' 'search search'; grid-template-columns: 1fr auto; grid-template-rows: 42px; padding-left: $bodyPaddingToSideMinimal; padding-right: $bodyPaddingToSideMinimal; }
+	header .search								{ width: 100%; max-width: auto; margin-top: 10px; }
 }
 
 @include for-size(max-tablet-portrait) {
-	header										{ grid-template-areas: 'logo shortcuts' 'search search'; grid-template-columns: 1fr auto; grid-template-rows: 42px; padding-left: $bodyPaddingToSideMinimal; padding-right: $bodyPaddingToSideMinimal; }
-
     .navigation label							{ left: $bodyPaddingToSideMinimal; }
 
-	header .search								{ width: 100%; max-width: auto; margin-top: 10px; }
-	
 	.navigation label							{ width: auto; }
 	.navigation label i							{ display: none; }
 	
 	.navigation .home							{ left: auto; right: $bodyPaddingToSideMinimal; }
-}
-
-@include for-size(tablet-landscape-up) {
-	header .search								{ width: 300px; }
 }
 
 @include for-size(desktop-up) {

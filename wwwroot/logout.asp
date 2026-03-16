@@ -60,7 +60,7 @@
 		End If
 
 %>
-                        <p>You are currently logged in with username: <b><%=XLpics.UserProfile_UserName%></b>.</p>
+                        <p>You are currently logged in with username: <b><%=Server.HTMLEncode(XLpics.UserProfile_UserName)%></b>.</p>
                         <ol class="form">
                             <li class="buttons">
                                 <button type="submit" name="logout" value="logout" class="default">Log out</button>
