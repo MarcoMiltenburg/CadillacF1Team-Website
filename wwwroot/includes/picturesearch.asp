@@ -84,10 +84,12 @@
 <%
 
                         If XLpics.UserLoggedIn And XLpics.UserProfile_AdminEnabled And XLpics.Page <> XLpicsPage_BrowseDownloadBasket Then
+						
+							HasPartners = CBool(Len(XLpics.GetFilteredArray(XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_ExclusiveGroups), Application("ListOfPartners"))) > 0)
 
 %>							<ol class="icons extrarow">
 								<li><a href="#" data-href="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>?group=Media" class="exclusivegroup media<% If (XLPics.IsInArray(XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_ExclusiveGroups), "Media")) Then Response.Write(" enabled") %>" title="Toggle Media availability"><span>Toggle Media availability</span></a></li>
-								<li><a href="#" data-basehref="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" data-statushref="/admin/get-exclusive-groups/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" class="partnersselector partners" title="Toggle Partners availability"><span>Toggle Partners availability</span></a></li>
+								<li><a href="#" data-basehref="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" data-statushref="/admin/get-exclusive-groups/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" data-pictureid="<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" id="partnersselector-<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" class="partnersselector partners<% If HasPartners Then Response.Write(" enabled") %>" title="Toggle Partners availability"><span>Toggle Partners availability</span></a></li>
 								<li><a href="#" data-href="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>?group=Internal" class="exclusivegroup internal<% If (XLPics.IsInArray(XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_ExclusiveGroups), "Internal")) Then Response.Write(" enabled") %>" title="Toggle Internal availability"><span>Toggle Internal availability</span></a></li>
 								<li><a href="#" data-href="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>?group=Drivers" class="exclusivegroup drivers<% If (XLPics.IsInArray(XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_ExclusiveGroups), "Drivers")) Then Response.Write(" enabled") %>" title="Toggle Drivers availability"><span>Toggle Drivers availability</span></a></li>
                             </ol>
@@ -127,5 +129,6 @@
 						</li>
 					</ol>
 					<input id="partnerselector-basehref" type="hidden" name="partnerselector-basehref" value="">
+					<input id="partnerselector-pictureid" type="hidden" name="partnerselector-pictureid" value="0">
 				</div>
 

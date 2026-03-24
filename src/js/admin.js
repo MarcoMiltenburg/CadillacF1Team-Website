@@ -34,6 +34,10 @@
 			var basehref = $(this).data('basehref');
 			$('#partnerselector-basehref').val(basehref);
 			
+			// Get the ID of the picture and save it
+			var pictureid = $(this).data('pictureid');
+			$('#partnerselector-pictureid').val(pictureid);
+
 			// Clear all existing statusses in the popup
 			$('#partnersselector a.partnerstoggle').removeClass('enabled');
 			
@@ -116,9 +120,11 @@
 					var status = $(xml).find('status').text();
 					if (status == 'enabled') {
 						el.addClass('enabled');
+						updatePartnerButtonState(true);
 					}
 					if (status == 'disabled') {
 						el.removeClass('enabled');
+						updatePartnerButtonState(false);
 					}
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
@@ -151,6 +157,25 @@
 					alert("Error " + jqXHR.status + ": " + jqXHR.statusText);
 				}
 			});
+		}
+		
+		function updatePartnerButtonState(atLeastOneEnabled)
+		{
+			// If we are not sure if one is enabled, check it
+			if (!atLeastOneEnabled)
+			{
+				atLeastOneEnabled = $('#partnersselector .partnerstoggle').hasClass('enabled');
+			}
+			
+			var pictureid = $('#partnerselector-pictureid').val();
+			var buttonEl = $('#partnersselector-' + pictureid);
+			
+			if (atLeastOneEnabled)
+			{
+				buttonEl.addClass('enabled');
+			} else {
+				buttonEl.removeClass('enabled');
+			}
 		}
 		
 		function showOverlayNonAnimated() {
