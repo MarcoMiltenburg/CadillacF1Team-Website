@@ -41,12 +41,14 @@ ol.icons li span					    { display: none; }
 #partnersselector										{ position: fixed; inset: 0px; width: fit-content; height: fit-content; margin: auto; z-index: 4000; padding: $bodyPaddingToSideRegular; border-radius: 4px; background-color: $siteBackgroundColor; color: $bodyTextColor; display: none; box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75); }
 #partnersselector a.partnerstoggle						{ display: block; width: 100%; box-sizing: border-box; height: $pageNavigationHeight; border-radius: 4px; padding: 0 10px; margin-bottom: 4px; line-height: $pageNavigationHeight; background-color: $siteBackgroundColor; }
 #partnersselector a.partnerstoggle:link,
-#partnersselector a.partnerstoggle:visited				{ text-decoration: none; color: $pageNavigationTextColor; border: 1px solid $pageNavigationBorderColor; background-color: $pageNavigationBackgroundColor;}
+#partnersselector a.partnerstoggle:visited				{ text-decoration: none; color: $pageNavigationTextColor; border: 1px solid $pageNavigationBorderColor; background-color: $pageNavigationBackgroundColor; }
 #partnersselector a.partnerstoggle:hover,
 #partnersselector a.partnerstoggle:active				{ text-decoration: none; color: $pageNavigationTextHoverColor; border: 1px solid $pageNavigationHoverBorderColor; background-color: $pageNavigationHoverBackgroundColor; }
 #partnersselector a.partnerstoggle:hover::before,
 #partnersselector a.partnerstoggle:active::before		{ text-decoration: none; color: $pageNavigationTextHoverColor; background-color: $pageNavigationHoverBackgroundColor; }
+#partnersselector a.partnerstoggle.disabled				{ color: $globalMidGray; border: 1px solid $globalMidGray; background-color: $pageNavigationBackgroundColor; pointer-events: none; cursor: default; }
 #partnersselector a.partnerstoggle.enabled				{ background-color: $pageNavigationActiveBackgroundColor; border: 1px solid $pageNavigationActiveBorderColor; color: $pageNavigationActiveTextColor; }
+#partnersselector button.unselectall					{ display: none; }
 
 @include for-size(phone-only) {
     div.thumbnails ul > li          { flex-basis: calc((100% - #{$spacingBetweenThumbnails * 3}) / 3); }
