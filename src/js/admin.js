@@ -34,12 +34,20 @@
 			var basehref = $(this).data('basehref');
 			$('#partnerselector-basehref').val(basehref);
 			
+			// Get the set link for setting the exclusive groups and save it
+			var sethref = $(this).data('sethref');
+			$('#partnerselector-sethref').val(sethref);
+
 			// Get the ID of the picture and save it
 			var pictureid = $(this).data('pictureid');
 			$('#partnerselector-pictureid').val(pictureid);
 
 			// Clear all existing statusses in the popup
-			$('#partnersselector a.partnerstoggle').removeClass('enabled');
+			$('#partnersselector a.partnerstoggle').removeClass('enabled').addClass('disabled');
+			
+			// Set buttons in default state
+			$('#partnersselector .selectall').show().attr('disabled', true);
+			$('#partnersselector .unselectall').hide().attr('disabled', false);
 			
 			// Get the status link and update selected partners
 			var statushref = $(this).data('statushref');
@@ -64,6 +72,44 @@
 			if ((basehref != '') && (group != '')) {
 				var link = addOrReplaceQueryStringParam(basehref, 'group', group);
 				toggleExclusiveGroup(link, $(this));
+			}
+			
+			return false;
+		});
+		
+		$('#partnersselector button.selectall').click(function(e) {
+			
+			e.preventDefault();
+			
+			var groups = [];
+			$('#partnersselector a.partnerstoggle').each(function(index, el) {
+				groups.push($(el).data('group'));
+			});
+
+			var allgroups = groups.join(',');
+			
+			var sethref = $('#partnerselector-sethref').val();
+			if ((sethref != '') && (allgroups != '')) {
+				setExclusiveGroups(sethref, allgroups, '');
+			}
+			
+			return false;
+		});
+
+		$('#partnersselector button.unselectall').click(function(e) {
+			
+			e.preventDefault();
+
+			var groups = [];
+			$('#partnersselector a.partnerstoggle').each(function(index, el) {
+				groups.push($(el).data('group'));
+			});
+
+			var allgroups = groups.join(',');
+			
+			var sethref = $('#partnerselector-sethref').val();
+			if ((sethref != '') && (allgroups != '')) {
+				setExclusiveGroups(sethref, '', allgroups);
 			}
 			
 			return false;
@@ -120,10 +166,46 @@
 					var status = $(xml).find('status').text();
 					if (status == 'enabled') {
 						el.addClass('enabled');
+						updateSelectUnselectAll(false);
 						updatePartnerButtonState(true);
 					}
 					if (status == 'disabled') {
 						el.removeClass('enabled');
+						updateSelectUnselectAll(false);
+						updatePartnerButtonState(false);
+					}
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					alert("Error " + jqXHR.status + ": " + jqXHR.statusText);
+				}
+			});
+		}
+		
+		function setExclusiveGroups(link, groupson, groupsoff) {
+			
+			$.ajax({
+				type: 'POST',
+				url: link,
+				data: { 'groups_on': groupson, 'groups_off': groupsoff },
+				context: this,
+				success: function (result) {
+					
+					if (result && result != '') {
+						
+						var partners = result.split(',');
+						var allSelected = true;
+						
+						$('#partnersselector a.partnerstoggle').each(function() {
+							var group = $(this).data('group');
+							if (partners.includes(group)) {
+								$(this).addClass('enabled');
+							} else {
+								$(this).removeClass('enabled');
+								allSelected = false;
+							}
+						});
+
+						updateSelectUnselectAll(allSelected);
 						updatePartnerButtonState(false);
 					}
 				},
@@ -144,13 +226,18 @@
 					if (result && result != '') {
 						
 						var partners = result.split(',');
+						var allSelected = true;
 						
 						$('#partnersselector a.partnerstoggle').each(function() {
-							var group = $(this).data('group');
+							var group = $(this).removeClass('disabled').data('group');
 							if (partners.includes(group)) {
 								$(this).addClass('enabled');
+							} else {
+								allSelected = false;
 							}
 						});
+
+						updateSelectUnselectAll(allSelected);
 					}
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
@@ -175,6 +262,26 @@
 				buttonEl.addClass('enabled');
 			} else {
 				buttonEl.removeClass('enabled');
+			}
+		}
+		
+		function updateSelectUnselectAll(allSelected) {
+
+			// If we know all are selected, we can skip the check
+			if (!allSelected) {
+				
+				allSelected = true;
+				$('#partnersselector a.partnerstoggle').each(function(index, el) {
+					allSelected &= $(el).hasClass('enabled');
+				});
+			}
+			
+			if (allSelected) {
+				$('#partnersselector .selectall').hide();
+				$('#partnersselector .unselectall').show();
+			} else {
+				$('#partnersselector .selectall').show().attr('disabled', false);
+				$('#partnersselector .unselectall').hide();
 			}
 		}
 		
