@@ -39,6 +39,7 @@ ol.icons a.edit:active                  { background-image: url(/img/all-icons.<
 ol.icons li span					    { display: none; }
 
 #partnersselector										{ position: fixed; inset: 0px; width: fit-content; height: fit-content; margin: auto; z-index: 4000; padding: $bodyPaddingToSideRegular; border-radius: 4px; background-color: $siteBackgroundColor; color: $bodyTextColor; display: none; box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75); }
+#partnersselector .multiple-text						{ margin-bottom: 1em; max-width: 260px; }
 #partnersselector a.partnerstoggle						{ display: block; width: 100%; box-sizing: border-box; height: $pageNavigationHeight; border-radius: 4px; padding: 0 10px; margin-bottom: 4px; line-height: $pageNavigationHeight; background-color: $siteBackgroundColor; }
 #partnersselector a.partnerstoggle:link,
 #partnersselector a.partnerstoggle:visited				{ text-decoration: none; color: $pageNavigationTextColor; border: 1px solid $pageNavigationBorderColor; background-color: $pageNavigationBackgroundColor; }

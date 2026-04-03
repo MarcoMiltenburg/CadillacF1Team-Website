@@ -1,6 +1,9 @@
     $(document).ready(function() {
 
 		document.addEventListener('keydown', onKeyDown);
+		
+		var multipleImagesSelected = false;
+		var partnersHaveBeenChanged = false;
 
 		function onKeyDown(e) {
 
@@ -11,7 +14,7 @@
 				return;
 			
 			// escape
-			if (e.keyCode == 27) { hidePartnersSelector(); }
+			if (e.keyCode == 27) { hidePartnersSelector(false); }
 		}
 
         $('a.exclusivegroup').click(function(e) {
@@ -35,12 +38,33 @@
 			$('#partnerselector-basehref').val(basehref);
 			
 			// Get the set link for setting the exclusive groups and save it
-			var sethref = $(this).data('sethref');
-			$('#partnerselector-sethref').val(sethref);
+			var setbasehref = $(this).data('setbasehref');
+			$('#partnerselector-setbasehref').val(setbasehref);
 
 			// Get the ID of the picture and save it
 			var pictureid = $(this).data('pictureid');
-			$('#partnerselector-pictureid').val(pictureid);
+
+			// Check if the user has selected multiple images
+			var slide = $('#slide-' + pictureid);
+			if (slide.hasClass('selected')) {
+				
+				multipleImagesSelected = true;
+				partnersHaveBeenChanged = false;
+				
+				// Get the ID's of all the selected pictures and save it
+				var pictureids = [];
+				$('.thumbnails .slide.selected').each(function(index, el) {
+					pictureids.push($(this).data('pictureid'));
+				});
+				
+				var allpictureids = pictureids.join(',');
+				$('#partnerselector-pictureid').val(allpictureids);
+			}
+			else
+			{
+				multipleImagesSelected = false;
+				$('#partnerselector-pictureid').val(pictureid);
+			}
 
 			// Clear all existing statusses in the popup
 			$('#partnersselector a.partnerstoggle').removeClass('enabled').addClass('disabled');
@@ -59,19 +83,56 @@
 		
 		$('#partnersselector button.close, #overlay2').click(function(e) {
 			e.preventDefault();
-			hidePartnersSelector();
+			hidePartnersSelector(true);
             return false;
 		});
 		
 		$('#partnersselector a.partnerstoggle').click(function(e) {
 			
 			e.preventDefault();
-			
-			var basehref = $('#partnerselector-basehref').val();
+
 			var group = $(this).data('group');
-			if ((basehref != '') && (group != '')) {
-				var link = addOrReplaceQueryStringParam(basehref, 'group', group);
-				toggleExclusiveGroup(link, $(this));
+
+			if (multipleImagesSelected) {
+				
+				var enablegroups = [];
+				var disablegroups = [];
+				$('#partnersselector a.partnerstoggle').each(function(index, el) {
+					var elgroup = $(el).data('group');
+					if ($(el).hasClass('enabled')) {
+						if (elgroup == group) {
+							disablegroups.push(elgroup);
+						} else {
+							enablegroups.push(elgroup);
+						}
+					} else {
+						if (elgroup == group) {
+							enablegroups.push(elgroup);
+						} else {
+							disablegroups.push(elgroup);
+						}
+					}
+				});
+
+				var allenablegroups = enablegroups.join(',');
+				var alldisablegroups = disablegroups.join(',');
+				
+				var pictureid = $('#partnerselector-pictureid').val();
+				var setbasehref = $('#partnerselector-setbasehref').val();
+				if ((setbasehref != '') && (pictureid != '') && (allenablegroups != '' || alldisablegroups != '')) {
+					setbasehref += pictureid;
+					setExclusiveGroups(setbasehref, allenablegroups, alldisablegroups);
+					partnersHaveBeenChanged = true;
+				}
+				
+			} else {
+				
+				var basehref = $('#partnerselector-basehref').val();
+				if ((basehref != '') && (group != '')) {
+					var link = addOrReplaceQueryStringParam(basehref, 'group', group);
+					toggleExclusiveGroup(link, $(this));
+				}
+
 			}
 			
 			return false;
@@ -88,9 +149,11 @@
 
 			var allgroups = groups.join(',');
 			
-			var sethref = $('#partnerselector-sethref').val();
-			if ((sethref != '') && (allgroups != '')) {
-				setExclusiveGroups(sethref, allgroups, '');
+			var pictureid = $('#partnerselector-pictureid').val();
+			var setbasehref = $('#partnerselector-setbasehref').val();
+			if ((setbasehref != '') && (pictureid != '') && (allgroups != '')) {
+				setbasehref += pictureid;
+				setExclusiveGroups(setbasehref, allgroups, '');
 			}
 			
 			return false;
@@ -107,12 +170,26 @@
 
 			var allgroups = groups.join(',');
 			
-			var sethref = $('#partnerselector-sethref').val();
-			if ((sethref != '') && (allgroups != '')) {
-				setExclusiveGroups(sethref, '', allgroups);
+			var pictureid = $('#partnerselector-pictureid').val();
+			var setbasehref = $('#partnerselector-setbasehref').val();
+			if ((setbasehref != '') && (pictureid != '') && (allgroups != '')) {
+				setbasehref += pictureid;
+				setExclusiveGroups(setbasehref, '', allgroups);
 			}
 			
 			return false;
+		});
+		
+		$('.thumbnails .slide a').click(function(e) {
+			if (e.shiftKey) {
+				e.preventDefault();
+				var parentslide = $(this).parent('.slide');
+				if (parentslide.hasClass('selected')) {
+					parentslide.removeClass('selected');
+				} else {
+					parentslide.addClass('selected');
+				}
+			}
 		});
 		
         $('a.togglepicturestatus').click(function(e) {
@@ -216,34 +293,47 @@
 		}
 		
 		function updatePartners(link) {
-			
-			$.ajax({
-				type: 'POST',
-				url: link,
-				context: this,
-				success: function (result) {
-					
-					if (result && result != '') {
-						
-						var partners = result.split(',');
-						var allSelected = true;
-						
-						$('#partnersselector a.partnerstoggle').each(function() {
-							var group = $(this).removeClass('disabled').data('group');
-							if (partners.includes(group)) {
-								$(this).addClass('enabled');
-							} else {
-								allSelected = false;
-							}
-						});
 
-						updateSelectUnselectAll(allSelected);
+			if (multipleImagesSelected) {
+
+				// Enable all partners, but leave them all unselected
+				$('#partnersselector a.partnerstoggle').each(function() {
+					var group = $(this).removeClass('disabled');
+				});
+				
+				updateSelectUnselectAll(false);
+
+			} else {
+				
+				// Call API to update status for partners
+				$.ajax({
+					type: 'POST',
+					url: link,
+					context: this,
+					success: function (result) {
+						
+						if (result && result != '') {
+							
+							var partners = result.split(',');
+							var allSelected = true;
+							
+							$('#partnersselector a.partnerstoggle').each(function() {
+								var group = $(this).removeClass('disabled').data('group');
+								if (partners.includes(group)) {
+									$(this).addClass('enabled');
+								} else {
+									allSelected = false;
+								}
+							});
+
+							updateSelectUnselectAll(allSelected);
+						}
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						alert("Error " + jqXHR.status + ": " + jqXHR.statusText);
 					}
-				},
-				error: function(jqXHR, textStatus, errorThrown) {
-					alert("Error " + jqXHR.status + ": " + jqXHR.statusText);
-				}
-			});
+				});
+			}
 		}
 		
 		function updatePartnerButtonState(atLeastOneEnabled)
@@ -255,14 +345,16 @@
 			}
 			
 			var pictureid = $('#partnerselector-pictureid').val();
-			var buttonEl = $('#partnersselector-' + pictureid);
+			var pictureids = pictureid.split(',');
 			
-			if (atLeastOneEnabled)
-			{
-				buttonEl.addClass('enabled');
-			} else {
-				buttonEl.removeClass('enabled');
-			}
+			pictureids.forEach((id) => {
+				if (atLeastOneEnabled)
+				{
+					$('#partnersselector-' + id).addClass('enabled');
+				} else {
+					$('#partnersselector-' + id).removeClass('enabled');
+				}
+			});
 		}
 		
 		function updateSelectUnselectAll(allSelected) {
@@ -297,10 +389,26 @@
 		
 		function showPartnersSelector() {
 			showOverlayNonAnimated();
+			
+			if (multipleImagesSelected) {
+				$('#partnersselector .multiple-text').show();
+			} else {
+				$('#partnersselector .multiple-text').hide();
+			}
+			
 			$('#partnersselector').show();
 		}
 		
-		function hidePartnersSelector() {
+		function hidePartnersSelector(unselectMultipleImages) {
+			
+			if (unselectMultipleImages && partnersHaveBeenChanged) {
+				
+				// Get all the selected pictures and unselect them
+				$('.thumbnails .slide.selected').each(function(index, el) {
+					$(el).removeClass('selected');
+				});
+			}
+			
 			$('#partnersselector').hide();
 			hideOverlayNonAnimated();
 		}
