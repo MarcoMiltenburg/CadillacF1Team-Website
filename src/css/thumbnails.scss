@@ -7,6 +7,7 @@ div.thumbnails ul							{ display: flex; justify-content: flex-start; flex-wrap:
 div.thumbnails ul > li						{ display: block; width: 275px; margin: 0 $spacingBetweenThumbnails $spacingBetweenThumbnails 0; text-align: center; }
 div.thumbnails ul > li .cont				{ position: relative; width: 100%; padding-bottom: 100%; }
 div.thumbnails ul > li .slide				{ position: absolute; width: 100%; height: 100%; text-align: center; box-sizing: border-box; padding: 4px; background-color: $siteBackgroundColor; border-radius: 6px; border-top: 1px solid $mediumAccent; border-left: 1px solid $mediumAccent; border-right: 2px solid $darkAccent; border-bottom: 2px solid $darkAccent; }
+div.thumbnails ul > li .slide.selected		{ background-color: #ffff78; }
 div.thumbnails ul > li .slide a				{ width: 100%; height: 100%; vertical-align: middle; display: inline-block; transform-style: preserve-3d; }
 div.thumbnails ul > li .exceedlimit         { border-color: #FF0000; background-color: #FFD9D9; }
 div.thumbnails ul > li img					{ position: relative; top: 50%; transform: translateY(-50%); vertical-align: middle; max-width: 100%; max-height: 100%; }

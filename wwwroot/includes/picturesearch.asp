@@ -30,7 +30,7 @@
 			For j = 1 To XLpics.PictureSearch.Count
 
 %>						<li>
-							<div class="cont"><div class="slide<% If (XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_ExceedDownloadLimit)) Then Response.Write(" exceedlimit") %>"><%
+							<div class="cont"><div id="slide-<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" class="slide<% If (XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_ExceedDownloadLimit)) Then Response.Write(" exceedlimit") %>" data-pictureid="<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>"><%
 							
 								If IsKeywordSearch Then
 								
@@ -89,7 +89,7 @@
 
 %>							<ol class="icons extrarow">
 								<li><a href="#" data-href="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>?group=Media" class="exclusivegroup media<% If (XLPics.IsInArray(XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_ExclusiveGroups), "Media")) Then Response.Write(" enabled") %>" title="Toggle Media availability"><span>Toggle Media availability</span></a></li>
-								<li><a href="#" data-basehref="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" data-statushref="/admin/get-exclusive-groups/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" data-sethref="/admin/set-exclusive-groups/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" data-pictureid="<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" id="partnersselector-<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" class="partnersselector partners<% If HasPartners Then Response.Write(" enabled") %>" title="Toggle Partners availability"><span>Toggle Partners availability</span></a></li>
+								<li><a href="#" data-basehref="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" data-statushref="/admin/get-exclusive-groups/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" data-setbasehref="/admin/set-exclusive-groups/" data-pictureid="<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" id="partnersselector-<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>" class="partnersselector partners<% If HasPartners Then Response.Write(" enabled") %>" title="Toggle Partners availability"><span>Toggle Partners availability</span></a></li>
 								<li><a href="#" data-href="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>?group=Internal" class="exclusivegroup internal<% If (XLPics.IsInArray(XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_ExclusiveGroups), "Internal")) Then Response.Write(" enabled") %>" title="Toggle Internal availability"><span>Toggle Internal availability</span></a></li>
 								<li><a href="#" data-href="/admin/toggle-exclusive-group/<%=XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_PictureID)%>?group=Drivers" class="exclusivegroup drivers<% If (XLPics.IsInArray(XLpics.PictureSearch.Item(j)(XLpicsPictureCollectionField_ExclusiveGroups), "Drivers")) Then Response.Write(" enabled") %>" title="Toggle Drivers availability"><span>Toggle Drivers availability</span></a></li>
                             </ol>
@@ -110,6 +110,7 @@
 				</div>
 				
 				<div id="partnersselector">
+					<div class="multiple-text">Warning: You are overwriting the partner selection for multiple images at the same time.</div>
 					<div class="partnerslist">
 						<ol>
 <%
@@ -135,7 +136,7 @@
 						</li>
 					</ol>
 					<input id="partnerselector-basehref" type="hidden" name="partnerselector-basehref" value="">
-					<input id="partnerselector-sethref" type="hidden" name="partnerselector-sethref" value="">
+					<input id="partnerselector-setbasehref" type="hidden" name="partnerselector-setbasehref" value="">
 					<input id="partnerselector-pictureid" type="hidden" name="partnerselector-pictureid" value="0">
 				</div>
 
