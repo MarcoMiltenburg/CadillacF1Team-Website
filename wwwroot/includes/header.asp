@@ -39,7 +39,6 @@
 					<li><a href="/event/f1-2026-racesuits">Race Suits</a></li>
 					<li><a href="/search?q=SilverstoneFactory">Silverstone Factory</a></li>
 					<li><a href="/search?q=TeamPersonnel">Team Personnel</a></li>
-					<li><a href="/search?q=GraemeLowdon">Graeme Lowdon</a></li>
 					<li><a href="/search?q=DanTowriss">Dan Towriss</a></li>
 				</ul>
 
